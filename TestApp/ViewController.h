@@ -10,6 +10,10 @@
 
 @interface ViewController : UIViewController
 
+@property (nonatomic, weak) IBOutlet UIView *circleView;
+@property (nonatomic, weak) IBOutlet UIView *instructionsLabel;
+@property (nonatomic, weak) IBOutlet UIView *actionButton;
+
 
 @end
 
