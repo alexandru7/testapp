@@ -51,6 +51,7 @@
 		E3EC46911E917BC700A0AAAC /* TestAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TestAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E3EC46951E917BC700A0AAAC /* TestAppUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestAppUITests.m; sourceTree = "<group>"; };
 		E3EC46971E917BC700A0AAAC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E3EC46A61E91835000A0AAAC /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -315,6 +316,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				E3EC467A1E917BC700A0AAAC /* Base */,
+				E3EC46A61E91835000A0AAAC /* en */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
