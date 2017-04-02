@@ -9,7 +9,7 @@
 #import "ViewController.h"
 
 #define MINIMUM_PRESS_DURATION 1.0
-#define NUMBER_OF_TRIALS 3
+#define NUMBER_OF_TRIALS 5
 
 @interface ViewController () {
 	UILongPressGestureRecognizer *longPressRecognizer;
@@ -101,13 +101,18 @@
 #pragma mark - Helpers
 
 - (NSString*)getJSONTextForNumbersArray:(NSArray *)numbersArray {
-	NSNumber *average = [NSNumber numberWithDouble:[self getAverageFromNumbersArray:timesArray]];
-	NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:
-						  timesArray, @"times",
-						  average, @"average", nil];
+	NSString *result = @"";
+	if (numbersArray) {
+		NSNumber *average = [NSNumber numberWithDouble:[self getAverageFromNumbersArray:timesArray]];
+		NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:
+							  timesArray, @"times",
+							  average, @"average", nil];
+		
+		NSData *jsonData = [NSJSONSerialization dataWithJSONObject:dict options:NSJSONWritingPrettyPrinted error:nil];
+		result = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+	}
 	
-	NSData *jsonData = [NSJSONSerialization dataWithJSONObject:dict options:NSJSONWritingPrettyPrinted error:nil];
-	return [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+	return result;
 }
 
 - (double)getAverageFromNumbersArray:(NSArray *)numbersArray {
