@@ -16,7 +16,10 @@
 
 - (void)viewDidLoad {
 	[super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
+	
+	self.circleView.backgroundColor = [UIColor blueColor];
+	self.circleView.layer.cornerRadius = self.circleView.frame.size.width / 2;
+	self.circleView.layer.shouldRasterize = YES;
 }
 
 
