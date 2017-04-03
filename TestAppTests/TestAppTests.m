@@ -7,6 +7,7 @@
 //
 
 #import <XCTest/XCTest.h>
+#import "ViewController.h"
 
 @interface TestAppTests : XCTestCase
 
@@ -24,16 +25,27 @@
     [super tearDown];
 }
 
-- (void)testExample {
-    // This is an example of a functional test case.
-    // Use XCTAssert and related functions to verify your tests produce the correct results.
+- (void)testTrials {
+	ViewController *vc = [[ViewController alloc] init];
+	[vc viewDidLoad];
+	for (int i = 1; i < 5; i++) {
+		[self doTrialAfterDelay:i inViewController:vc];
+		XCTAssert([vc.timesArray count] == i);
+		
+		int lastDelay = [[vc.timesArray objectAtIndex:(i-1)] intValue];
+		
+		XCTAssert(lastDelay == i);
+	}
+	
+	//after the 5th trial the times array is cleared and results are displayed
+	[self doTrialAfterDelay:1 inViewController:vc];
+	XCTAssert([vc.timesArray count] == 0);
 }
 
-- (void)testPerformanceExample {
-    // This is an example of a performance test case.
-    [self measureBlock:^{
-        // Put the code you want to measure the time of here.
-    }];
+- (void)doTrialAfterDelay:(int)seconds inViewController:(ViewController *)vc {
+	vc.startTime = [NSDate date];
+	sleep(seconds);
+	[vc circleTapAction:nil];
 }
 
 @end
