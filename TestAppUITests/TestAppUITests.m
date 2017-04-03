@@ -32,9 +32,30 @@
     [super tearDown];
 }
 
-- (void)testExample {
-    // Use recording to get started writing UI tests.
-    // Use XCTAssert and related functions to verify your tests produce the correct results.
+- (void)testActionButton {
+	XCUIApplication *app = [[XCUIApplication alloc] init];
+	XCUIElement *actionbuttonButton = app.buttons[@"actionButton"];
+	
+	[actionbuttonButton tap];
+	XCTAssert(actionbuttonButton.enabled == YES, @"Button was not enabled after a tap");
+	
+	[actionbuttonButton pressForDuration:0.9];
+	XCTAssert(actionbuttonButton.enabled == YES, @"Button was not enabled after 0.9 seconds");
+	
+	[actionbuttonButton pressForDuration:1.1];
+	XCTAssert(actionbuttonButton.enabled == NO, @"Button was enabled after 1.1 seconds");
+}
+
+- (void)testCircle {
+//	XCUIApplication *app = [[XCUIApplication alloc] init];
+//	XCUIElement *actionbuttonButton = app.buttons[@"actionButton"];
+//	XCUIElement *instructionsLabelElement = app.staticTexts[@"instructionsLabel"];
+//	
+//	[actionbuttonButton pressForDuration:1.1];
+//	
+//	sleep(7);
+//	
+//	XCTAssert([instructionsLabelElement.label isEqualToString: @"Tap the green circle"], @"The label had incorrect text");
 }
 
 @end
