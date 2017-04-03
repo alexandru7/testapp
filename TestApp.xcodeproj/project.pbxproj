@@ -15,6 +15,12 @@
 		E3EC46801E917BC700A0AAAC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E3EC467E1E917BC700A0AAAC /* LaunchScreen.storyboard */; };
 		E3EC468B1E917BC700A0AAAC /* TestAppTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E3EC468A1E917BC700A0AAAC /* TestAppTests.m */; };
 		E3EC46961E917BC700A0AAAC /* TestAppUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = E3EC46951E917BC700A0AAAC /* TestAppUITests.m */; };
+		E3EC46A71E92A9F700A0AAAC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E3EC46791E917BC700A0AAAC /* Main.storyboard */; };
+		E3EC46A81E92A9FD00A0AAAC /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E3EC46771E917BC700A0AAAC /* ViewController.m */; };
+		E3EC46A91E92AA0300A0AAAC /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E3EC46741E917BC700A0AAAC /* AppDelegate.m */; };
+		E3EC46AA1E92AA2400A0AAAC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E3EC467E1E917BC700A0AAAC /* LaunchScreen.storyboard */; };
+		E3EC46AB1E92AA3000A0AAAC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E3EC467C1E917BC700A0AAAC /* Assets.xcassets */; };
+		E3EC46AC1E92AA3600A0AAAC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E3EC46711E917BC700A0AAAC /* main.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -257,6 +263,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E3EC46A71E92A9F700A0AAAC /* Main.storyboard in Resources */,
+				E3EC46AB1E92AA3000A0AAAC /* Assets.xcassets in Resources */,
+				E3EC46AA1E92AA2400A0AAAC /* LaunchScreen.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -284,7 +293,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E3EC46A81E92A9FD00A0AAAC /* ViewController.m in Sources */,
 				E3EC468B1E917BC700A0AAAC /* TestAppTests.m in Sources */,
+				E3EC46AC1E92AA3600A0AAAC /* main.m in Sources */,
+				E3EC46A91E92AA0300A0AAAC /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -373,7 +385,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -415,7 +427,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
