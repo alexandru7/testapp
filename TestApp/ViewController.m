@@ -64,16 +64,20 @@
 
 
 - (void)longPressAction:(UILongPressGestureRecognizer *)longPressGestureRecognizer {
-	//make sure the delay si between 3 to 7 seconds
-	long timerDelay = arc4random_uniform(4) + 3;
-	
-	self.actionButton.enabled = NO;
-	
-	[NSTimer scheduledTimerWithTimeInterval:timerDelay repeats:NO block:^(NSTimer * _Nonnull timer) {
-		[self setCircleViewToInteractiveState];
+	if (longPressGestureRecognizer && longPressGestureRecognizer.state == UIGestureRecognizerStateEnded) {
+		//make sure the delay is between 3 to 7 seconds
+		long timerDelay = arc4random_uniform(4) + 3;
 		
-		startTime = [NSDate date];
-	}];
+		self.actionButton.enabled = NO;
+		
+		[NSTimer scheduledTimerWithTimeInterval:timerDelay target:self selector:@selector(startTrial:) userInfo:nil repeats:NO];
+	}
+}
+
+- (void)startTrial:(NSTimer *)timer {
+	[self setCircleViewToInteractiveState];
+	
+	startTime = [NSDate date];
 }
 
 - (void)circleTapAction:(UITapGestureRecognizer *)tapGestureRecognizer {
@@ -83,7 +87,7 @@
 	
 	if (startTime) {
 		NSNumber *time = [NSNumber numberWithDouble:(-1 * [startTime timeIntervalSinceNow])];
-		NSLog(@"Added time: %@", time);
+		
 		[timesArray addObject:time];
 		self.instructionsLabel.text = NSLocalizedString(@"Repeat the trial", nil);
 		
