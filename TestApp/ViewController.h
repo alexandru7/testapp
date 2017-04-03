@@ -15,6 +15,10 @@
 @property (nonatomic, weak) IBOutlet UILabel *instructionsLabel;
 @property (nonatomic, weak) IBOutlet UIButton *actionButton;
 
+@property (nonatomic, strong) NSDate *startTime;
+@property (nonatomic, strong) NSMutableArray *timesArray;
+
+- (void)circleTapAction:(UITapGestureRecognizer *)tapGestureRecognizer;
 
 @end
 

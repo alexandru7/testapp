@@ -14,8 +14,6 @@
 @interface ViewController () {
 	UILongPressGestureRecognizer *longPressRecognizer;
 	UITapGestureRecognizer *tapRecognizer;
-	NSDate *startTime;
-	NSMutableArray *timesArray;
 }
 
 @end
@@ -32,8 +30,6 @@
 	tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(circleTapAction:)];
 	[self.circleView addGestureRecognizer:tapRecognizer];
 	
-	timesArray = [[NSMutableArray alloc] init];
-	
 	self.circleView.layer.cornerRadius = self.circleView.frame.size.width / 2;
 	self.circleView.layer.shouldRasterize = YES;
 	
@@ -46,7 +42,7 @@
 	self.circleView.backgroundColor = [UIColor blueColor];
 	tapRecognizer.enabled = NO;
 	
-	startTime = nil;
+	self.startTime = nil;
 	
 	self.actionButton.enabled = YES;
 }
@@ -77,25 +73,23 @@
 - (void)startTrial:(NSTimer *)timer {
 	[self setCircleViewToInteractiveState];
 	
-	startTime = [NSDate date];
+	self.startTime = [NSDate date];
 }
 
 - (void)circleTapAction:(UITapGestureRecognizer *)tapGestureRecognizer {
-	if (timesArray == nil) {
-		timesArray = [[NSMutableArray alloc] init];
-	}
-	
-	if (startTime) {
-		NSNumber *time = [NSNumber numberWithDouble:(-1 * [startTime timeIntervalSinceNow])];
+	if (self.startTime) {
+		if (self.timesArray == nil) {
+			self.timesArray = [[NSMutableArray alloc] init];
+		}
+		NSNumber *time = [NSNumber numberWithDouble:(-1 * [self.startTime timeIntervalSinceNow])];
 		
-		[timesArray addObject:time];
+		[self.timesArray addObject:time];
 		self.instructionsLabel.text = NSLocalizedString(@"Repeat the trial", nil);
 		
-		if ([timesArray count] >= NUMBER_OF_TRIALS) {
-			self.resultsTextView.text = [self getJSONTextForNumbersArray:timesArray];
+		if ([self.timesArray count] >= NUMBER_OF_TRIALS) {
+			self.resultsTextView.text = [self getJSONTextForNumbersArray:self.timesArray];
 			self.instructionsLabel.text = @"";
-			
-			timesArray = [[NSMutableArray alloc] init];
+			[self.timesArray removeAllObjects];
 		}
 	}
 	
@@ -107,9 +101,9 @@
 - (NSString*)getJSONTextForNumbersArray:(NSArray *)numbersArray {
 	NSString *result = @"";
 	if (numbersArray) {
-		NSNumber *average = [NSNumber numberWithDouble:[self getAverageFromNumbersArray:timesArray]];
+		NSNumber *average = [NSNumber numberWithDouble:[self getAverageFromNumbersArray:self.timesArray]];
 		NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:
-							  timesArray, @"times",
+							  self.timesArray, @"times",
 							  average, @"average", nil];
 		
 		NSData *jsonData = [NSJSONSerialization dataWithJSONObject:dict options:NSJSONWritingPrettyPrinted error:nil];
